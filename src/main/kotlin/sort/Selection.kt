@@ -4,8 +4,6 @@ class Selection {
 
     fun sort(list: IntArray): IntArray {
 
-        val l = ArrayList<Int>()
-
         val limit = list.size - 1
 
         for (i in 0..limit) {
