@@ -4,25 +4,24 @@ class Selection {
 
     fun sort(list: IntArray): IntArray {
 
-        val limit = list.size - 1
+        var sortList = list.clone()
+        val lastIndex = list.lastIndex
 
-        for (i in 0..limit) {
+        for (i in 0..lastIndex) {
 
             var minIndex = i
 
-            for (j in (i + 1)..limit) {
+            for (j in (i + 1)..lastIndex) {
 
-                if (list[j] < list[minIndex]) {
+                if (sortList[j] < sortList[minIndex]) {
                     minIndex = j
                 }
             }
 
-            val t = list[i]
-            list[i] = list[minIndex]
-            list[minIndex] = t
+            sortList = switch(sortList, minIndex, i)
         }
 
-        return list
+        return sortList
     }
 
 }
