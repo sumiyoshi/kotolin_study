@@ -7,6 +7,10 @@ import java.time.LocalDateTime
 import java.time.ZoneId
 import java.util.*
 
+import java.security.MessageDigest;
+import java.math.BigInteger
+
+
 class AuthTest {
 
     private val secret = "honmani secret na key"
@@ -28,6 +32,29 @@ class AuthTest {
             .setExpiration(Date.from(expiration.toInstant()))
             .signWith(SignatureAlgorithm.HS256, secret)
             .compact()
+    }
+
+    @Test
+    fun testPassword() {
+        val password = "test"
+        assertEquals(getSHA256(password), getSHA256(password))
+    }
+
+    fun getSHA256(input: String): String? {
+
+        val message = input + "salt"
+
+        var toReturn: String? = null
+        try {
+            val digest = MessageDigest.getInstance("SHA-256")
+            digest.reset()
+            digest.update(message.toByteArray(charset("utf8")))
+            toReturn = String.format("%040x", BigInteger(1, digest.digest()))
+        } catch (e: Exception) {
+            e.printStackTrace()
+        }
+
+        return toReturn
     }
 
 }
