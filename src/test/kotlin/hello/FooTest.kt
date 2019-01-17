@@ -1,21 +1,15 @@
 import org.junit.Assert.*
 import org.junit.*
-import hello.*
+import com.sumilab.Case
 
 class FooTest {
 
     @Test
-    fun testMethod1() {
-        val foo = Foo()
-        assertEquals("test1", foo.method1())
+    fun testCase() {
+        assertEquals(Case.toCamel("test_test"), "testTest")
+        assertEquals(Case.toPascal("test_test"), "TestTest")
     }
 
-    @Test
-    fun testMethod2() {
-        val foo = Foo()
-        assertEquals("test2", foo.method2())
-    }
-    
     @Test
     fun testScopeFunction() {
 
