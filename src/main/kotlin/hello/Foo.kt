@@ -11,3 +11,5 @@ class Foo {
     }
 
 }
+
+inline class Name(val value: String)

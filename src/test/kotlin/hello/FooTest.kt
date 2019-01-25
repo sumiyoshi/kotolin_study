@@ -1,6 +1,7 @@
 import org.junit.Assert.*
 import org.junit.*
 import com.sumilab.Case
+import hello.Name
 
 class FooTest {
 
@@ -8,6 +9,14 @@ class FooTest {
     fun testCase() {
         assertEquals(Case.toCamel("test_test"), "testTest")
         assertEquals(Case.toPascal("test_test"), "TestTest")
+    }
+
+    @Test
+    fun testInlineClass()
+    {
+        val name = Name("Name!")
+        assertEquals(name.equals(name), true)
+        assertNotEquals(name.equals("Name!"), true)
     }
 
     @Test
